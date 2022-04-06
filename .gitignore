@@ -1,0 +1,9 @@
+# Python cache
+__pycache__
+
+# Test items
+.pytest*
+.coverage
+
+# Virtual env
+.env
