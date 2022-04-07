@@ -1,6 +1,7 @@
 # OTP-Encryption
 
-[![Na|solid](https://img.shields.io/badge/license-GPL-brightgreen)](https://github.com/r00ne/OTP-Encryption/blob/main/LICENSE)    [![Na|solid](https://img.shields.io/badge/python-3.8-brightgreen)](https://github.com/r00ne/OTP-Encryption/blob/master/LICENSE)
+[![Na|solid](https://img.shields.io/badge/license-GPL-brightgreen)](https://github.com/r00ne/OTP-Encryption/blob/main/LICENSE) [![Na|solid](https://img.shields.io/badge/python-3.8-brightgreen)](https://github.com/r00ne/OTP-Encryption/blob/master/LICENSE) ![example workflow](https://github.com/r00ne/pyOTP-Encryption/actions/workflows/python-app.yml/badge.svg)
+
 
 
 This is an encryption/decryption **poc** written in python based on one-time pad **(OTP) encryption**. The program essentially XOR's two files (source file & key file) together to create an encrypted file (output file). The key file must be at least as long as the source file. If you want to use an offset then the key file must be at least as long as **sourcefile + offset**.
