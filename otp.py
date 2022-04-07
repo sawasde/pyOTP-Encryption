@@ -36,6 +36,8 @@ def file_to_bytes(filename):
 def validate_length(source, key, offset):
 	""" Check if file length is okay"""
 
+	result = True
+
 	try:
 		source_len = len(source)
 		key_len = len(key)
@@ -55,39 +57,50 @@ def validate_length(source, key, offset):
 
 	except Exception as e:
 		print("[-] Error on validate_length:", e)
-		sys.exit(-1)
+		result = False
+
+	finally:
+		return result
 
 def encrypt(source, key, offset):
 	""" XOR each correspond byte starting on offset"""
 	
-	result =[]
+	result = list()
 
 	try:
 		key = key[offset:-1]
 
 		for b1, b2 in zip(source, key):
 			result.append (b1^b2)
-
-		return bytes(result)
+		
+		result = bytes(result)
 	
 	except Exception as e:
 		print("[-] Error on encrypt", e)
-		sys.exit(-1)
+		result = None
+	
+	finally:
+		return result
 
-def save_output(result, filename):
+def save_output(value, filename):
 	""" Save the encrypted result to the output file"""
+
+	result = True
 	
 	try:
 		with open(filename, "wb") as f:
-			f.write(result)
+			f.write(value)
 
 	except Exception as e:
 		print("[-] Error on save_output", e)
-		sys.exit(-1)
+		result = False
 	
+	finally:
+		return result
 
-def main():
-	
+def parse_args(argv=None):
+	""" PArce cli arguments"""
+
 	# Initialize parser
 	parser = argparse.ArgumentParser(description="Encrypt Files with OTP-Encryption")
 	
@@ -103,8 +116,14 @@ def main():
 
 	parser.add_argument("-x", type=int, metavar='<offset>', default=0, dest='offset',
 						help="(Optional) Start the encryption with x bytes offset. Default is 0", required=False)
+
+	return parser.parse_args(argv)
+
+
+def main(argv=None):
+	""" Main Function """
 	
-	args = parser.parse_args()
+	args = parse_args(argv)
 	
 	# Validate source and key files
 	print('[+] Validating Files')
@@ -124,21 +143,29 @@ def main():
 	print('[+] Source file:', source)
 	print('[+] key or Pad file:', key)
 	print('[+] Validate Length')
-	validate_length(source_bytes, key_bytes, offset)
+	
+	if not validate_length(source_bytes, key_bytes, offset):
+		print("[-] Encryption Failed. Exiting ...")
+		sys.exit(1)
 
 	# Encrypt
 	print('[+] Start Encryption/Decryption')
 
 	result = encrypt(source_bytes, key_bytes, offset)
+	
+	if not result:
+		print("[-] Encryption Failed. Exiting ...")
+		sys.exit(2)
 
 	# Save to output
 	print('[+] Save result on', output)
-	save_output(result, output)
+	
+	if not save_output(result, output):
+		print("[-] Encryption Failed. Exiting ...")
+		sys.exit(3)
 
 	print('[+] Encryption/Decryption done')
 
+
 if __name__ == "__main__":
-	try:
-		main()
-	except Exception as e:
-		print(e)
+	main()
