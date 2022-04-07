@@ -226,7 +226,7 @@ def test_main_fail1():
     try:
         otp.main(['-s', SOURCE_FILE, '-k', KEY_FILE1, '-o', encrypted, '-x', '0'])
         result = 'ok'
-    except Exception:
+    except SystemExit:
         result = 'fail'
 
     remove_file(SOURCE_FILE)
@@ -251,7 +251,7 @@ def test_main_fail2(monkeypatch):
     try:
         otp.main(['-s', SOURCE_FILE, '-k', KEY_FILE2, '-o', encrypted, '-x', '0'])
         result = 'ok'
-    except Exception:
+    except SystemExit:
         result = 'fail'
 
     remove_file(SOURCE_FILE)
@@ -276,7 +276,7 @@ def test_main_fail3(monkeypatch):
     try:
         otp.main(['-s', SOURCE_FILE, '-k', KEY_FILE2, '-o', encrypted, '-x', '0'])
         result = 'ok'
-    except Exception:
+    except SystemExit:
         result = 'fail'
 
     remove_file(SOURCE_FILE)
