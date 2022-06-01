@@ -44,4 +44,4 @@ Run the containter in the root of the repository. The files you want to encrypt/
 
 # Other Versions
 
-There is a C version version [here](https://github.com/r00ne/OTP-Encryption).
+There is a C version version [here](https://github.com/alturiano/OTP-Encryption).
