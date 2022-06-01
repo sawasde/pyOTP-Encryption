@@ -1,6 +1,6 @@
 # OTP-Encryption
 
-[![Na|solid](https://img.shields.io/badge/license-GPL-brightgreen)](https://github.com/alturiano/pyOTP-Encryption/blob/main/LICENSE) ![Na|solid](https://img.shields.io/badge/python-3.8-brightgreen)![example workflow](https://github.com/alturiano/pyOTP-Encryption/actions/workflows/python-app.yml/badge.svg)
+[![Na|solid](https://img.shields.io/badge/license-GPL-brightgreen)](https://github.com/alturiano/pyOTP-Encryption/blob/main/LICENSE) ![Na|solid](https://img.shields.io/badge/python-3.8-brightgreen) ![example workflow](https://github.com/alturiano/pyOTP-Encryption/actions/workflows/python-app.yml/badge.svg)
 
 
 
