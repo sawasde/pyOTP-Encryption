@@ -29,10 +29,6 @@ Run the containter in the root of the repository. The files you want to encrypt/
 ##### Linux/MacOS/Powershell
 
     docker run -v ${PWD}:/home pyotp-encryption -s <sourcefile> -k <keyfile> -o <outputfile> -x <offset (default 0)>
-    
-##### Windows
-
-    docker run -v %cd%:/home pyotp-encryption -s <sourcefile> -k <keyfile> -o <outputfile> -x <offset (default 0)>
 
 ### Modes
 ----
